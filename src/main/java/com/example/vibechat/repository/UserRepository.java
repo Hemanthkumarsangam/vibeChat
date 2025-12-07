@@ -30,7 +30,7 @@ public class UserRepository {
     }
 
     public void save(User user) {
-        String userIRI = "http://example.com/resource/user/" + user.getUName();
+        String userIRI = "http://example.com/resource/user/" + user.getUserName();
 
         String insertQuery = """
             PREFIX : <http://example.com/schema#>
@@ -43,10 +43,10 @@ public class UserRepository {
             }
         """.formatted(
                 userIRI,
-                user.getUName(),
+                user.getUserName(),
                 user.getPassword(),
-                user.getFName(),
-                user.getLName()
+                user.getFirstName(),
+                user.getLastName()
         );
 
         sparqlService.update(insertQuery);
@@ -74,10 +74,10 @@ public class UserRepository {
         Map<String, String> row = results.getFirst();
 
         User user = new User();
-        user.setUName(username);
+        user.setUserName(username);
         user.setPassword(row.get("password"));
-        user.setFName(row.get("firstName"));
-        user.setLName(row.get("lastName"));
+        user.setFirstName(row.get("firstName"));
+        user.setLastName(row.get("lastName"));
 
         return Optional.of(user);
     }

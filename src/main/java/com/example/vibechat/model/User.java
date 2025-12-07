@@ -12,9 +12,9 @@ import org.springframework.stereotype.Component;
 public class User {
 
     private Long id;
-    private String fName;
-    private String lName;
-    private String uName;
+    private String firstName;
+    private String lastName;
+    private String userName;
     private String password;
 
 }

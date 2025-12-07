@@ -16,7 +16,7 @@ public class UserController {
 
     @PostMapping("/create")
     public ResponseEntity<String> createUser(@RequestBody User request) {
-
+         System.out.println(request);
         try {
             userRepo.save(request);
             return ResponseEntity.ok("User created successfully ✔");
